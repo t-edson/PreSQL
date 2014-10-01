@@ -1,0 +1,7 @@
+$DEFINIR nombre = valor
+
+$PARA x EN 1 2 3 HACER
+  asdsa asdsad
+FINPARA
+
+SELECT * FROM TABS;

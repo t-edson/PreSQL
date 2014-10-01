@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="9"/>
+    <PathDelim Value="\"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <Title Value="PreSQL"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <Icon Value="0"/>
+    </General>
+    <i18n>
+      <EnableI18N LFM="False"/>
+    </i18n>
+    <VersionInfo>
+      <StringTable ProductVersion=""/>
+    </VersionInfo>
+    <BuildModes Count="2">
+      <Item1 Name="Depuración" Default="True"/>
+      <Item2 Name="Final">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="PreSQL"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="..\_Librerias\SynFacilSyn9.3b;..\_Librerias\SynFacilCompletion0.7b;..\_Librerias\SynFacilUtils0.3b;..\_Librerias\UnTerminal 0.6;..\_Librerias\SQLPlusConsole 0.4b;..\_Librerias\ConfigFrame 0.3.1b;..\_Librerias\MisUtils 0.1b"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CompilerMessages>
+              <MsgFileName Value=""/>
+            </CompilerMessages>
+            <CompilerPath Value="$(CompPath)"/>
+          </Other>
+        </CompilerOptions>
+      </Item2>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="3">
+      <Item1>
+        <PackageName Value="LazControls"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="SynEdit"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="LCL"/>
+      </Item3>
+    </RequiredPackages>
+    <Units Count="10">
+      <Unit0>
+        <Filename Value="PreSQL.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PreSQL"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="globales.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Globales"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="FormConfig.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Config"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormConfig"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="FrameCfgGen.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frameConfigGen"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="FrameCfgGen"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="FormPrincipal.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Principal"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormPrincipal"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="uprebasicos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uPreBasicos"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="upreproces.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uPreProces"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="FrameArcExplor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmArcExplor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="FrameArcExplor"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="FormVisor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmVisor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormVisor"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="..\_Librerias\SynFacilUtils0.3b\FormSelFuente.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSelFuente"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormSelFuente"/>
+      </Unit9>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="PreSQL"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="..\_Librerias\SynFacilSyn9.3b;..\_Librerias\SynFacilCompletion0.7b;..\_Librerias\SynFacilUtils0.3b;..\_Librerias\UnTerminal 0.6;..\_Librerias\SQLPlusConsole 0.4b;..\_Librerias\ConfigFrame 0.3.1b;..\_Librerias\MisUtils 0.1b"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Other>
+      <CompilerMessages>
+        <MsgFileName Value=""/>
+      </CompilerMessages>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+</CONFIG>
