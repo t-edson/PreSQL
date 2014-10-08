@@ -25,7 +25,7 @@ The 'output file' is not necessary for sending a query to the Database.
 
 If the 'output file' is specified, then the query file is "expanded" into the output file, but sent to the Database.
 
-The connection string must be indicated at the beginning of the query filem, in the form:
+The connection string must be indicated at the beginning of the query file, in the form:
 
 user/password@sid
 
