@@ -11,15 +11,15 @@ The preprocessing is for implement some macro functionalities (For details, see 
 
 The PreSQL client, is called using this syntax:
 
-´´´
+```
 PreSQL @<query file> [output file]
-´´´
+```
 
 For example, to send the query "report.sql":
 
-´´´
+```
 > PreSQL @report.sql
-´´´
+```
 
 The 'output file' is not necessary for sending a query to the Database.
 
