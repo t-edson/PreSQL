@@ -1,6 +1,6 @@
 {
 uPreProces
-Modificado por Tito Hinostroza 03/10/2014
+Modificado por Tito Hinostroza 03/11/2014
 Unidad que define la sintaxis del PreSQL 2.0. Adaptado de la versión 1.3 de VB.
 Se define esta unidad para implementar el procesamiento de un texto o archivo.
 No se incluyen mensajes de tipo writeln(), o ShowMessage(), para evitar hacer a
@@ -10,7 +10,7 @@ unit uPreProces; {$mode objfpc}{$H+}
 
 interface
 uses
-  Classes, SysUtils, Fgl, uPreBasicos, FileUtil, DateUtils;
+  Classes, SysUtils, Fgl, FileUtil, DateUtils, uPreBasicos;
 
 procedure PreProcesar(arc: String; txt: String; var cadcon0: string);
 
@@ -36,6 +36,7 @@ Tdefinicion  = class   //estructura de definicion
    txt: String;       //Texto de la definición (Solo las de Tipo directo)
    procedure Expandir;  //espande la definición y escribe en la salida
    function ValTxt: string;  //devuelve la defición expandida
+   procedure FijTxt(t: string); //fija un valor de texto a la definición
    procedure LeeElementos(elem: TStringList);  //lee definición como lista
 End;
 
@@ -102,10 +103,11 @@ begin
            PErr.GenError('Identificador desconocido: ' + cad, PPro.PosAct);
            Exit;
         end;
-        //es definición, se considera como constante, auqneu podría ser variable
-        CogOperando.txt := 'i';
+        //es definición, se considera como una variable
+        CogOperando.txt := 'd';  //indica definición
         CogOperando.valTxt := def.ValTxt;  //expande directamente
-        CogOperando.cat := COP_CONST;
+//        CogOperando.def := def;   //guarda la referencia a la definición
+        CogOperando.cat := COP_DEFINIC;
     end  Else
         Exit;  //no devuelve nada
 End;
@@ -864,7 +866,8 @@ begin
 end;
 procedure PreProcesar(arc: String; txt: String; var cadcon0: string);
 {Realiza el preprocesamiento de un archivo o un texto. Si "txt" <> "", se procesa "txt",
- de otra forma, procesa el archivo "arc". La salida preprocesada se debe extraer de PPro.
+ de otra forma, procesa el archivo "arc". La salida preprocesada se debe extraer de
+ PPro.
  Si se encuentra una sentencia de tip CONNECT en la consulta, se devolverá la cadena
  de conexión, en "cadcon0", de otra forma se devolverá una cadena vacía.
  Punto de entrada único para el preprocesamiento.}
@@ -943,6 +946,13 @@ begin
  COMO .. FINDEFINIR de una sola linea, se expande con un salto al final }
      PPro.QuitaContexSal;   //Elimina contexto creado
   end;
+end;
+
+procedure Tdefinicion.FijTxt(t: string);
+begin
+  tip := TD_DIR;   //la fuerza a definición directa, o de otra forma no tiene sentido
+                   //cambiar su valor
+  txt := t;        //cambia su valor
 end;
 
 procedure Tdefinicion.LeeElementos(elem: TStringList);

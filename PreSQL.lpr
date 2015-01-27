@@ -64,12 +64,10 @@ var
   Prepro      : Boolean;   //bandera para preprocesar
   EjecOracle  : Boolean;   //bandera para ejecutar en Oracle
   MostrarError: Boolean;   //Bandera para mostrar mensajesde error.
-  MsjeIni     : String;    //Mensaje inicial
-  ActConsSeg  : Boolean;   //Activa consultas en segundo plano
 
 procedure MostrarSintaxis;
 begin
-   writeln('PreSQL 2.5b');
+   writeln('PreSQL 2.4b');
    writeln('Por Tito E Hinostroza - Derechos Reservados');
    writeln('Lima - Peru - 2014');
    writeln('');
@@ -167,10 +165,8 @@ begin
    archivoEnt := '';
    archivoSal := '';
    MostrarError := True;
-   MsjeIni := '';
    Prepro := False;
    EjecOracle := False;
-   ActConsSeg := False;
    //Lee parámetros de entrada
    i := 1;
    while i <= ParamCount do begin
@@ -181,12 +177,6 @@ begin
             '/CONSULTA': EjecOracle := True;
             '/NOERROR': MostrarError := False;
             '/ERROR': MostrarError := True;
-            '/CONSEG': ActConsSeg := True;
-            '/NOCONSEG': ActConsSeg := False;
-            '/MSJE': if i < ParamCount then begin  //lee mensaje
-                        inc(i);
-                        MsjeIni := ParamStr(i);
-                     end;
          Else begin
                 writeln('Error. Parámetro desconocido: ' + par);
                 Result := true;
@@ -223,7 +213,7 @@ begin
   //verifica el archivo de salida
   if archivoSal = '' then begin
     {Solo en este caso, se hace la verificación del directrio temporal, porque aquí
-     necesitamos crear una rchivo temporal. }
+     necesitamos crear un archivo temporal. }
     //Verifica
     dirSal := ExtractFilePath(ParamStr(0)) + 'bolsa\';
     if not DirectoryExists(dirSal) then begin

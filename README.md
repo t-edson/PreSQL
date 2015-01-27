@@ -1,5 +1,5 @@
-PreSQL 2.4b
-===========
+PreSQL 2.4
+==========
 
 Client and preprocessor for Oracle databases using the SQLPlus
 

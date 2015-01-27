@@ -35,7 +35,7 @@ Type
   //Categoría para clasificar a los operandos
   TPCatOper = (COP_VACIO, //Operando nulo
 //    COP_VARPUNTO, //Variable Punto
-//    COP_VARIABLE,    //es una variable
+    COP_DEFINIC,    //es una variable (definición)
     COP_FUNCION,     //Es una función
     COP_CONST,       //Es una constante
     COP_EXPRESION);  //Es resultado de una expresión
@@ -58,6 +58,7 @@ Type
     function LeeNum: single;
     function LeeFec: TDateTime;
   public
+    def : pointer;   //referencia a la definición (en caso de que lo sea)
     property valTxt: string read LeeTxt write FijTxt;
     property valNum: single read LeeNum write FijNum;
     property valFec: TDateTime read LeeFec;
@@ -257,7 +258,7 @@ function Texpre.LeeNum: single;
 begin
   if tip = TIP_CAD then begin //si es texto, se hace una transformación
     //puede que no se pueda transformar
-    if not TryStrToFloat(ftxt, Result) then  //pero no deja de ser texto
+    if not TryStrToFloat(trim(ftxt), Result) then  //pero no deja de ser texto
       PErr.GenError( 1, 'Número inválido.')
   end else if tip = TIP_NUM then //Si ya es numérico, la lectura es directa
     Result := fNum
@@ -946,12 +947,14 @@ begin
           Evaluar := Op1;
         end;
 {    '=': begin    //Asignación
-          If Op1.cat = CAT_OP_VARIABLE Then begin  //Asignación a una variable
-              Evaluar.val := Op2.val;
-              Evaluar.tip := Op2.tip;
-              //OJO!!!!!!!!!! aún no hace la asignación
-          end Else
-              Perr.GenError('Sólo se puede asignar valor a una variable', PosAct);
+           If Op1.cat = COP_DEFINIC Then begin  //Asignación a una variable
+//              Evaluar.val := Op2.val;
+//              Evaluar.tip := Op2.tip;
+             Op1 := Op2;
+             tDefi Op1.def:=;
+             Evaluar:= Op1
+           end Else
+             Perr.GenError('Sólo se puede asignar valor a una variable', PosAct);
          end;}
     '+': begin
           Evaluar.valNum := Op1.valNum + Op2.valNum;  //Fuerza a Evaluar.tip := TIP_NUM
